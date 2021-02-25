@@ -86,7 +86,20 @@ sudo tee -a ~/mt300c.service > /dev/null <<EOT
 Description=MT300C service
 After=sysinit.target
 [Service]
-ExecStart=sudo /usr/bin/java -Xmx0.5G -jar mt300c.jar
+ExecStart=/usr/bin/java -Xmx0.5G -jar mt300c.jar
+WorkingDirectory=/home/pi/deltaway/MT300
+StandardOutput=null
+Restart=always
+User=root
+[Install]
+WantedBy=multi-user.target
+EOT
+sudo tee -a ~/mt300m.service > /dev/null <<EOT
+[Unit]
+Description=MT300M service
+After=sysinit.target
+[Service]
+ExecStart=/usr/bin/java -Xmx0.5G -jar mt300m.jar
 WorkingDirectory=/home/pi/deltaway/MT300
 StandardOutput=null
 Restart=always
@@ -100,7 +113,20 @@ sudo tee -a ~/mt300c.service > /dev/null <<EOT
 Description=MT300C service
 After=sysinit.target
 [Service]
-ExecStart=sudo /usr/bin/java -Xmx2G -jar mt300c.jar
+ExecStart=/usr/bin/java -Xmx2G -jar mt300c.jar
+WorkingDirectory=/home/pi/deltaway/MT300
+StandardOutput=null
+Restart=always
+User=root
+[Install]
+WantedBy=multi-user.target
+EOT
+sudo tee -a ~/mt300m.service > /dev/null <<EOT
+[Unit]
+Description=MT300M service
+After=sysinit.target
+[Service]
+ExecStart=/usr/bin/java -Xmx2G -jar mt300m.jar
 WorkingDirectory=/home/pi/deltaway/MT300
 StandardOutput=null
 Restart=always
@@ -113,3 +139,5 @@ echo "NOT SUPPORTED"
 fi
 sudo mv ~/mt300c.service /etc/systemd/system/mt300c.service
 sudo systemctl enable mt300c.service
+sudo mv ~/mt300m.service /etc/systemd/system/mt300m.service
+sudo systemctl enable mt300m.service
