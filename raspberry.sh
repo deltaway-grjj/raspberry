@@ -81,7 +81,7 @@ sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
 MODEL=$(cat /proc/device-tree/model)
 if [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]3[[:space:]]Model[[:space:]]B.* ]]; then
-sudo tee -a mt300c.service > /dev/null <<EOT
+sudo tee -a ~/mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
 After=sysinit.target
@@ -95,7 +95,7 @@ User=root
 WantedBy=multi-user.target
 EOT
 elif [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]4[[:space:]]Model[[:space:]]B.* ]]; then
-sudo tee -a mt300c.service > /dev/null <<EOT
+sudo tee -a ~/mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
 After=sysinit.target
@@ -111,3 +111,5 @@ EOT
 else
 echo "NOT SUPPORTED"
 fi
+sudo mv ~/mt300c.service /etc/systemd/system/mt300c.service
+sudo systemctl enable mt300c.service
