@@ -1,5 +1,5 @@
 #!/bin/sh
-sudo apt update && sudo apt -y install \
+sudo apt update && sudo apt -y upgrade && sudo apt -y install \
 ant \
 autoconf \
 autoconf-archive \
