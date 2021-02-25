@@ -68,8 +68,8 @@ echo 'dtoverlay=pi3-disable-wifi' | sudo tee -a /boot/config.txt
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
 rm -rf ~/wiringpi/
-git clone https://github.com/WiringPi/WiringPi --branch master --single-branch wiringpi
-cd ~/wiringpi
+git clone https://github.com/WiringPi/WiringPi --branch master --single-branch ~/wiringpi/
+cd ~/wiringpi/
 sudo ./build
 cd ~
 sudo mkdir -p /home/pi/deltaway/MT300
