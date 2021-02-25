@@ -62,3 +62,8 @@ xmlstarlet \
 yasm \
 zlib1g \
 zlib1g-dev
+echo 'dtoverlay=pi3-disable-bt' | sudo tee -a /boot/config.txt
+sudo systemctl disable hciuart
+echo 'dtoverlay=pi3-disable-wifi' | sudo tee -a /boot/config.txt
+sudo systemctl stop systemd-timesyncd
+sudo systemctl disable systemd-timesyncd
