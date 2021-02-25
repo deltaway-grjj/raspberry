@@ -69,7 +69,7 @@ sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
 git clone https://github.com/WiringPi/WiringPi --branch master --single-branch wiringpi
 cd ~/wiringpi
-sudo ./build
+sudo ./build || true
 cd ~
 sudo mkdir -p /home/pi/deltaway/MT300
 sudo mkdir -p /home/pi/deltaway/MT300/Config
