@@ -10,11 +10,13 @@ ccache \
 clang \
 cmake \
 file \
+ffmpeg \
 freeglut3-dev \
 gfortran \
 git \
 git-core \
 gzip \
+g++ \
 libasound2-dev \
 libass-dev \
 libatlas-base-dev \
