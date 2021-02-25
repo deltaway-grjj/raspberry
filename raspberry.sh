@@ -80,7 +80,7 @@ sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Backup
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
 MODEL=$(cat /proc/device-tree/model)
-if [[ "$MODEL" =~ .*Raspberry Pi 3 Model B.* ]]; then
+if [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]3[[:space:]]Model[[:space:]]B.* ]]; then
   echo "It's there."
 else
 echo "Erroooou"
