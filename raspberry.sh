@@ -81,12 +81,33 @@ sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
 MODEL=$(cat /proc/device-tree/model)
 if [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]3[[:space:]]Model[[:space:]]B.* ]]; then
-  echo "It's there."
+sudo tee -a mt300c.service > /dev/null <<EOT
+[Unit]
+Description=MT300C service
+After=sysinit.target
+[Service]
+ExecStart=sudo /usr/bin/java -Xmx0.5G -jar mt300c.jar
+WorkingDirectory=/home/pi/deltaway/MT300
+StandardOutput=null
+Restart=always
+User=root
+[Install]
+WantedBy=multi-user.target
+EOT
+elif [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]4[[:space:]]Model[[:space:]]B.* ]]; then
+sudo tee -a mt300c.service > /dev/null <<EOT
+[Unit]
+Description=MT300C service
+After=sysinit.target
+[Service]
+ExecStart=sudo /usr/bin/java -Xmx2G -jar mt300c.jar
+WorkingDirectory=/home/pi/deltaway/MT300
+StandardOutput=null
+Restart=always
+User=root
+[Install]
+WantedBy=multi-user.target
+EOT
 else
-echo "Erroooou"
+echo "NOT SUPPORTED"
 fi
-#MODEL=$(cat /proc/device-tree/model)
-#VAR='GNU/Linux is an operating system'
-#if [[ $VAR == *"Linux"* ]]; then
-#  echo "It's there."
-#fi
