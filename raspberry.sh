@@ -79,7 +79,14 @@ sudo mkdir -p /home/pi/deltaway/MT300/lib
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Backup
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
-MODEL=$(cat /proc/device-tree/model)
-if [[ $MODEL == *"Raspberry Pi 3 Model B"* ]]; then
+VAR='GNU/Linux is an operating system'
+if [[ "$VAR" =~ .*Linux.* ]]; then
   echo "It's there."
+else
+echo "Erroooou"
 fi
+#MODEL=$(cat /proc/device-tree/model)
+#VAR='GNU/Linux is an operating system'
+#if [[ $VAR == *"Linux"* ]]; then
+#  echo "It's there."
+#fi
