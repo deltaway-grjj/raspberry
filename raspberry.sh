@@ -67,3 +67,20 @@ sudo systemctl disable hciuart
 echo 'dtoverlay=pi3-disable-wifi' | sudo tee -a /boot/config.txt
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
+git clone https://github.com/WiringPi/WiringPi --branch master --single-branch wiringpi
+cd ~/wiringpi
+sudo ./build
+cd ~
+sudo mkdir -p /home/pi/deltaway/MT300
+sudo mkdir -p /home/pi/deltaway/MT300/Config
+sudo mkdir -p /home/pi/deltaway/MT300/Log
+sudo mkdir -p /home/pi/deltaway/MT300/lib
+sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Backup
+sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
+sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
+
+VAR='Raspberry Pi 3 Model B'
+MODEL=cat /proc/device-tree/model
+if [[ $VAR == *$MODEL* ]]; then
+  echo "It's there."
+fi
