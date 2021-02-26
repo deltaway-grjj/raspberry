@@ -86,7 +86,8 @@ tar -xzf package.tar.gz
 sudo mv ~/package/fsex300-webfont.ttf /usr/share/fonts/fsex300-webfont.ttf
 sudo mv ~/package/libdeviceDriver.so ~/deltaway/MT300/libdeviceDriver.so
 sudo mv ~/package/libopencv_java451.so ~/deltaway/MT300/lib/libopencv_java451.so
-#MODEL=$(cat /proc/device-tree/model)
+sudo mv ~/package/mt300c.jar ~/deltaway/MT300/mt300c.jar
+sudo mv ~/package/mt300m.jar ~/deltaway/MT300/mt300m.jar
 MODEL=$(tr -d '\0' </proc/device-tree/model)
 if [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]3[[:space:]]Model[[:space:]]B.* ]]; then
 echo "RPi3"
@@ -153,4 +154,5 @@ sudo mv ~/mt300c.service /etc/systemd/system/mt300c.service
 sudo systemctl enable mt300c.service
 sudo mv ~/mt300m.service /etc/systemd/system/mt300m.service
 sudo systemctl enable mt300m.service
+sudo java -jar ~/package/manufatura.jar false
 echo "END"
