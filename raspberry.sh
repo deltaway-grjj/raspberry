@@ -79,8 +79,15 @@ sudo mkdir -p /home/pi/deltaway/MT300/lib
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Backup
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
+cd ~
+wget ftp://teste:@192.168.10.238/package.tar.gz
+tar -xzf package.tar.gz
+sudo mv ~/package/fsex300-webfont.ttf /usr/share/fonts/fsex300-webfont.ttf
+sudo mv ~/package/libdeviceDriver.so ~/deltaway/MT300/libdeviceDriver.so
+sudo mv ~/package/libopencv_java451.so ~/deltaway/MT300/lib/libopencv_java451.so
 MODEL=$(cat /proc/device-tree/model)
 if [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]3[[:space:]]Model[[:space:]]B.* ]]; then
+sudo mv ~/package/deltaway_device_driver_RPi3.ko ~/deltaway/MT300/deltaway_device_driver.ko
 sudo tee -a ~/mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
@@ -108,6 +115,7 @@ User=root
 WantedBy=multi-user.target
 EOT
 elif [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]4[[:space:]]Model[[:space:]]B.* ]]; then
+sudo mv ~/package/deltaway_device_driver_RPi4.ko ~/deltaway/MT300/deltaway_device_driver.ko
 sudo tee -a ~/mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
