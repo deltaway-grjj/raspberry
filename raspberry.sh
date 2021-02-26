@@ -86,8 +86,8 @@ sudo mv ~/package/fsex300-webfont.ttf /usr/share/fonts/fsex300-webfont.ttf
 sudo mv ~/package/libdeviceDriver.so ~/deltaway/MT300/libdeviceDriver.so
 sudo mv ~/package/libopencv_java451.so ~/deltaway/MT300/lib/libopencv_java451.so
 MODEL=$(cat /proc/device-tree/model)
-echo "1"
 if [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]3[[:space:]]Model[[:space:]]B.* ]]; then
+echo "RPi3"
 sudo mv ~/package/deltaway_device_driver_RPi3.ko ~/deltaway/MT300/deltaway_device_driver.ko
 sudo tee -a ~/mt300c.service > /dev/null <<EOT
 [Unit]
@@ -116,6 +116,7 @@ User=root
 WantedBy=multi-user.target
 EOT
 elif [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]4[[:space:]]Model[[:space:]]B.* ]]; then
+echo "RPi4"
 sudo mv ~/package/deltaway_device_driver_RPi4.ko ~/deltaway/MT300/deltaway_device_driver.ko
 sudo tee -a ~/mt300c.service > /dev/null <<EOT
 [Unit]
@@ -150,4 +151,4 @@ sudo mv ~/mt300c.service /etc/systemd/system/mt300c.service
 sudo systemctl enable mt300c.service
 sudo mv ~/mt300m.service /etc/systemd/system/mt300m.service
 sudo systemctl enable mt300m.service
-echo "SUCESS"
+echo "END"
