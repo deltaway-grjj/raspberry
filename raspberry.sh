@@ -154,5 +154,5 @@ sudo mv ~/mt300c.service /etc/systemd/system/mt300c.service
 sudo systemctl enable mt300c.service
 sudo mv ~/mt300m.service /etc/systemd/system/mt300m.service
 sudo systemctl enable mt300m.service
-sudo java -jar ~/package/manufatura.jar false
+#sudo java -jar ~/package/manufatura.jar false
 echo "END"
