@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt update && sudo apt -y upgrade && sudo apt -y install \
+sudo apt update && sudo apt -y full-upgrade && sudo apt -y install \
 ant \
 autoconf \
 autoconf-archive \
@@ -62,7 +62,8 @@ xmlstarlet \
 yasm \
 zlib1g \
 zlib1g-dev
-sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-armhf/jre/bin/java
+sudo apt clean
+#sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-armhf/jre/bin/java
 echo 'dtoverlay=pi3-disable-bt' | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
 echo 'dtoverlay=pi3-disable-wifi' | sudo tee -a /boot/config.txt
