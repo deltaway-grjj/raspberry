@@ -99,6 +99,7 @@ After=sysinit.target
 [Service]
 ExecStart=/usr/bin/java -Xmx512m -jar mt300c.jar
 WorkingDirectory=/home/pi/deltaway/MT300
+StandardError=null
 StandardOutput=null
 Restart=always
 User=root
@@ -112,6 +113,7 @@ After=sysinit.target
 [Service]
 ExecStart=/usr/bin/java -Xmx512m -jar mt300m.jar
 WorkingDirectory=/home/pi/deltaway/MT300
+StandardError=null
 StandardOutput=null
 Restart=always
 User=root
@@ -128,6 +130,7 @@ After=sysinit.target
 [Service]
 ExecStart=/usr/bin/java -Xmx2G -jar mt300c.jar
 WorkingDirectory=/home/pi/deltaway/MT300
+StandardError=null
 StandardOutput=null
 Restart=always
 User=root
@@ -141,6 +144,7 @@ After=sysinit.target
 [Service]
 ExecStart=/usr/bin/java -Xmx2G -jar mt300m.jar
 WorkingDirectory=/home/pi/deltaway/MT300
+StandardError=null
 StandardOutput=null
 Restart=always
 User=root
