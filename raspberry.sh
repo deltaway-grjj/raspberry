@@ -65,9 +65,9 @@ zlib1g \
 zlib1g-dev
 sudo apt clean
 sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-armhf/jre/bin/java
-echo 'dtoverlay=pi3-disable-bt' | sudo tee -a /boot/config.txt
+echo 'dtoverlay=disable-bt' | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
-echo 'dtoverlay=pi3-disable-wifi' | sudo tee -a /boot/config.txt
+echo 'dtoverlay=disable-wifi' | sudo tee -a /boot/config.txt
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
 #rm -rf ~/wiringpi/
