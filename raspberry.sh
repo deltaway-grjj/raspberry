@@ -47,7 +47,7 @@ libxvidcore-dev \
 make \
 maven \
 nasm \
-#openjdk-8-jdk \
+openjdk-8-jdk \
 patch \
 perl \
 pkg-config \
@@ -63,16 +63,16 @@ yasm \
 zlib1g \
 zlib1g-dev
 sudo apt clean
-#sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-armhf/jre/bin/java
+sudo update-alternatives --set java /usr/lib/jvm/java-8-openjdk-armhf/jre/bin/java
 echo 'dtoverlay=pi3-disable-bt' | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
 echo 'dtoverlay=pi3-disable-wifi' | sudo tee -a /boot/config.txt
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
-rm -rf ~/wiringpi/
-git clone https://github.com/WiringPi/WiringPi --branch master --single-branch ~/wiringpi/
-cd ~/wiringpi/
-sudo ./build
+#rm -rf ~/wiringpi/
+#git clone https://github.com/WiringPi/WiringPi --branch master --single-branch ~/wiringpi/
+#cd ~/wiringpi/
+#sudo ./build
 cd ~
 sudo mkdir -p /home/pi/deltaway/MT300
 sudo mkdir -p /home/pi/deltaway/MT300/Config
