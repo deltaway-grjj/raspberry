@@ -57,6 +57,7 @@ swig \
 tar \
 texinfo \
 unzip \
+wiringpi \
 wget \
 xmlstarlet \
 yasm \
