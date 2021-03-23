@@ -57,7 +57,7 @@ swig \
 tar \
 texinfo \
 unzip \
-#wiringpi \
+wiringpi \
 wget \
 xmlstarlet \
 yasm \
@@ -70,10 +70,10 @@ sudo systemctl disable hciuart
 echo 'dtoverlay=disable-wifi' | sudo tee -a /boot/config.txt
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
-rm -rf ~/wiringpi/
-git clone https://github.com/WiringPi/WiringPi --branch master --single-branch ~/wiringpi/
-cd ~/wiringpi/
-sudo ./build
+#rm -rf ~/wiringpi/
+#git clone https://github.com/WiringPi/WiringPi --branch master --single-branch ~/wiringpi/
+#cd ~/wiringpi/
+#sudo ./build
 cd ~
 sudo mkdir -p /home/pi/deltaway/MT300
 sudo mkdir -p /home/pi/deltaway/MT300/Config
