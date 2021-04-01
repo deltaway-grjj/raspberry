@@ -93,7 +93,7 @@ sudo mv ~/package/mt300c.jar ~/deltaway/MT300/mt300c.jar
 sudo mv ~/package/mt300m.jar ~/deltaway/MT300/mt300m.jar
 MODEL=$(tr -d '\0' </proc/device-tree/model)
 if [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]3[[:space:]]Model[[:space:]]B.* ]]; then
-echo "RPi3"
+#echo "RPi3"
 sudo mv ~/package/deltaway_device_driver_RPi3.ko ~/deltaway/MT300/deltaway_device_driver.ko
 sudo tee -a ~/mt300c.service > /dev/null <<EOT
 [Unit]
@@ -124,7 +124,7 @@ User=root
 WantedBy=multi-user.target
 EOT
 elif [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]4[[:space:]]Model[[:space:]]B.* ]]; then
-echo "RPi4"
+#echo "RPi4"
 sudo mv ~/package/deltaway_device_driver_RPi4.ko ~/deltaway/MT300/deltaway_device_driver.ko
 sudo tee -a ~/mt300c.service > /dev/null <<EOT
 [Unit]
