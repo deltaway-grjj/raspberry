@@ -70,6 +70,7 @@ sudo systemctl disable hciuart
 echo 'dtoverlay=disable-wifi' | sudo tee -a /boot/config.txt
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
+sudo systemctl disable dphys-swapfile.service
 rm -rf ~/wiringpi/
 git clone https://github.com/WiringPi/WiringPi --branch master --single-branch ~/wiringpi/
 cd ~/wiringpi/
