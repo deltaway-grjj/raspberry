@@ -9,6 +9,7 @@ bzip2 \
 ccache \
 clang \
 cmake \
+default-jdk \
 file \
 ffmpeg \
 freeglut3-dev \
