@@ -102,7 +102,7 @@ sudo tee -a ~/mt300c.service > /dev/null <<EOT
 Description=MT300C service
 After=sysinit.target
 [Service]
-ExecStart=/usr/bin/java -Xmx512m -jar mt300c.jar
+ExecStart=/usr/bin/java -Xmx256m -jar mt300c.jar
 WorkingDirectory=/home/pi/deltaway/MT300
 StandardError=null
 StandardOutput=null
