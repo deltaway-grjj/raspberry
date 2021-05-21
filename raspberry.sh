@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-sudo apt update && sudo apt -y full-upgrade && sudo apt -y install \
+sudo apt update && sudo apt -y full-upgrade && sudo apt -y --fix-broken install \
 ant \
 autoconf \
 autoconf-archive \
