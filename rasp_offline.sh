@@ -38,7 +38,7 @@ sudo tee -a ~/mt300c.service > /dev/null <<EOT
 Description=MT300C service
 After=sysinit.target
 [Service]
-ExecStart=/usr/bin/java -Xmx512m -jar mt300c.jar
+ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300c.jar
 WorkingDirectory=/home/pi/deltaway/MT300
 StandardError=null
 StandardOutput=null
@@ -52,7 +52,7 @@ sudo tee -a ~/mt300m.service > /dev/null <<EOT
 Description=MT300M service
 After=sysinit.target
 [Service]
-ExecStart=/usr/bin/java -Xmx512m -jar mt300m.jar
+ExecStart=/usr/bin/java -server -Xms512m -Xmx512m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300m.jar
 WorkingDirectory=/home/pi/deltaway/MT300
 StandardError=null
 StandardOutput=null
@@ -69,7 +69,7 @@ sudo tee -a ~/mt300c.service > /dev/null <<EOT
 Description=MT300C service
 After=sysinit.target
 [Service]
-ExecStart=/usr/bin/java -Xmx1G -jar mt300c.jar
+ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300c.jar
 WorkingDirectory=/home/pi/deltaway/MT300
 StandardError=null
 StandardOutput=null
@@ -83,7 +83,7 @@ sudo tee -a ~/mt300m.service > /dev/null <<EOT
 Description=MT300M service
 After=sysinit.target
 [Service]
-ExecStart=/usr/bin/java -Xmx2G -jar mt300m.jar
+ExecStart=/usr/bin/java -server -Xms512m -Xmx512m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300m.jar
 WorkingDirectory=/home/pi/deltaway/MT300
 StandardError=null
 StandardOutput=null
