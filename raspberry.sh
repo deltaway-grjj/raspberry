@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt update && sudo apt -y full-upgrade && sudo apt -y install \
+sudo apt update && sudo rpi-update 78c1429cc1d5a200d824d2629c3ceba4ba4617fe && sudo apt -y install \
 ant \
 autoconf \
 autoconf-archive \
