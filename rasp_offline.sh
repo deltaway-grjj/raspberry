@@ -9,11 +9,11 @@ echo 'dtoverlay=i2c-gpio,i2c_gpio_sda=8,i2c_gpio_scl=9' | sudo tee -a /boot/conf
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
 sudo systemctl disable dphys-swapfile.service
-rm -rf ~/wiringpi/
-git clone https://github.com/WiringPi/WiringPi --branch master --single-branch ~/wiringpi/
-cd ~/wiringpi/
-sudo ./build
-cd ~
+#rm -rf ~/wiringpi/
+#git clone https://github.com/WiringPi/WiringPi --branch master --single-branch ~/wiringpi/
+#cd ~/wiringpi/
+#sudo ./build
+#cd ~
 sudo mkdir -p /home/pi/deltaway/MT300
 sudo mkdir -p /home/pi/deltaway/MT300/Config
 sudo mkdir -p /home/pi/deltaway/MT300/Log
@@ -21,7 +21,7 @@ sudo mkdir -p /home/pi/deltaway/MT300/lib
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Backup
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
-cd ~
+#cd ~
 wget ftp://teste:@192.168.10.238/package.tar.gz
 tar -xzf package.tar.gz
 sudo mv ~/package/fsex300-webfont.ttf /usr/share/fonts/fsex300-webfont.ttf
