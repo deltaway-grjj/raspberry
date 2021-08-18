@@ -26,11 +26,11 @@ sudo mkdir -p /home/pi/deltaway/MT300/lib
 wget ftp://teste:@192.168.10.238/package.tar.gz
 tar -xzf package.tar.gz
 rm package.tar.gz
-sudo mv package/fsex300-webfont.ttf /usr/share/fonts/fsex300-webfont.ttf
-sudo mv package/libdeviceDriver.so /home/pi/deltaway/MT300/libdeviceDriver.so
-sudo mv package/libopencv_java452.so /home/pi/deltaway/MT300/lib/libopencv_java452.so
-sudo mv package/mt300c.jar /home/pi/deltaway/MT300/mt300c.jar
-sudo mv package/mt300m.jar /home/pi/deltaway/MT300/mt300m.jar
+sudo mv package/fsex300-webfont.ttf /usr/share/fonts/
+sudo mv package/libdeviceDriver.so /home/pi/deltaway/MT300/
+sudo mv package/libopencv_java452.so /home/pi/deltaway/MT300/lib
+sudo mv package/mt300c.jar /home/pi/deltaway/MT300/
+sudo mv package/mt300m.jar /home/pi/deltaway/MT300/
 MODEL=$(tr -d '\0' </proc/device-tree/model)
 if [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]3[[:space:]]Model[[:space:]]B.* ]]; then
 #echo "RPi3"
@@ -98,8 +98,8 @@ else
 echo "NOT SUPPORTED"
 fi
 rm -rf package/
-sudo mv mt300c.service /etc/systemd/system/mt300c.service
+sudo mv mt300c.service /etc/systemd/system/
 sudo systemctl enable mt300c.service
-sudo mv mt300m.service /etc/systemd/system/mt300m.service
+sudo mv mt300m.service /etc/systemd/system/
 sudo systemctl enable mt300m.service
 echo "END"
