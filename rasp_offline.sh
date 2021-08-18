@@ -1,7 +1,9 @@
 #!/bin/bash
 wget ftp://teste:@192.168.10.238/archives.tar.gz
 tar -xzf archives.tar.gz
+rm archives.tar.gz
 sudo dpkg -i archives/*.deb
+rm -rf archives/
 echo 'dtoverlay=disable-bt' | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
 echo 'dtoverlay=disable-wifi' | sudo tee -a /boot/config.txt
@@ -16,24 +18,24 @@ sudo systemctl disable dphys-swapfile.service
 #cd ~
 sudo mkdir -p /home/pi/deltaway/MT300
 sudo mkdir -p /home/pi/deltaway/MT300/Config
-sudo mkdir -p /home/pi/deltaway/MT300/Log
-sudo mkdir -p /home/pi/deltaway/MT300/lib
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Backup
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
 sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
-#cd ~
+sudo mkdir -p /home/pi/deltaway/MT300/Log
+sudo mkdir -p /home/pi/deltaway/MT300/lib
 wget ftp://teste:@192.168.10.238/package.tar.gz
 tar -xzf package.tar.gz
-sudo mv ~/package/fsex300-webfont.ttf /usr/share/fonts/fsex300-webfont.ttf
-sudo mv ~/package/libdeviceDriver.so ~/deltaway/MT300/libdeviceDriver.so
-sudo mv ~/package/libopencv_java451.so ~/deltaway/MT300/lib/libopencv_java451.so
-sudo mv ~/package/mt300c.jar ~/deltaway/MT300/mt300c.jar
-sudo mv ~/package/mt300m.jar ~/deltaway/MT300/mt300m.jar
+rm package.tar.gz
+sudo mv package/fsex300-webfont.ttf /usr/share/fonts/fsex300-webfont.ttf
+sudo mv package/libdeviceDriver.so ~/deltaway/MT300/libdeviceDriver.so
+sudo mv package/libopencv_java452.so ~/deltaway/MT300/lib/libopencv_java452.so
+sudo mv package/mt300c.jar ~/deltaway/MT300/mt300c.jar
+sudo mv package/mt300m.jar ~/deltaway/MT300/mt300m.jar
 MODEL=$(tr -d '\0' </proc/device-tree/model)
 if [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]3[[:space:]]Model[[:space:]]B.* ]]; then
 #echo "RPi3"
-sudo mv ~/package/deltaway_device_driver_RPi3.ko ~/deltaway/MT300/deltaway_device_driver.ko
-sudo tee -a ~/mt300c.service > /dev/null <<EOT
+sudo mv package/deltaway_device_driver_RPi3.ko ~/deltaway/MT300/deltaway_device_driver.ko
+sudo tee -a mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
 After=sysinit.target
@@ -47,7 +49,7 @@ User=root
 [Install]
 WantedBy=multi-user.target
 EOT
-sudo tee -a ~/mt300m.service > /dev/null <<EOT
+sudo tee -a mt300m.service > /dev/null <<EOT
 [Unit]
 Description=MT300M service
 After=sysinit.target
@@ -63,8 +65,8 @@ WantedBy=multi-user.target
 EOT
 elif [[ "$MODEL" =~ .*Raspberry[[:space:]]Pi[[:space:]]4[[:space:]]Model[[:space:]]B.* ]]; then
 #echo "RPi4"
-sudo mv ~/package/deltaway_device_driver_RPi4.ko ~/deltaway/MT300/deltaway_device_driver.ko
-sudo tee -a ~/mt300c.service > /dev/null <<EOT
+sudo mv package/deltaway_device_driver_RPi4.ko ~/deltaway/MT300/deltaway_device_driver.ko
+sudo tee -a mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
 After=sysinit.target
@@ -78,7 +80,7 @@ User=root
 [Install]
 WantedBy=multi-user.target
 EOT
-sudo tee -a ~/mt300m.service > /dev/null <<EOT
+sudo tee -a mt300m.service > /dev/null <<EOT
 [Unit]
 Description=MT300M service
 After=sysinit.target
@@ -95,9 +97,9 @@ EOT
 else
 echo "NOT SUPPORTED"
 fi
-sudo mv ~/mt300c.service /etc/systemd/system/mt300c.service
+rm -rf package/
+sudo mv mt300c.service /etc/systemd/system/mt300c.service
 sudo systemctl enable mt300c.service
-sudo mv ~/mt300m.service /etc/systemd/system/mt300m.service
+sudo mv mt300m.service /etc/systemd/system/mt300m.service
 sudo systemctl enable mt300m.service
-#sudo java -jar ~/package/manufatura.jar false
 echo "END"
