@@ -1,6 +1,6 @@
 #!/bin/bash
-wget ftp://teste:@192.168.10.238/packages.tar.gz
-tar -xzf packages.tar.gz
+wget ftp://teste:@192.168.10.238/archives.tar.gz
+tar -xzf archives.tar.gz
 sudo dpkg -i archives/*.deb
 echo 'dtoverlay=disable-bt' | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
