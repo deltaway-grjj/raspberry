@@ -107,4 +107,3 @@ sudo useradd -G adm,sudo -M -N -p "$(< /home/pi/script/password)"  "$(< /home/pi
 sudo deluser pi adm
 sudo deluser pi sudo
 echo "END"
-history -c
