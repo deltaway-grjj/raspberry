@@ -103,3 +103,4 @@ sudo systemctl enable mt300c.service
 sudo mv mt300m.service /etc/systemd/system/
 sudo systemctl enable mt300m.service
 echo "END"
+history -c
