@@ -1,6 +1,6 @@
 #!/bin/bash
 wget ftp://teste:@192.168.10.238/archives.tar.gz
-tar -xzf archives.tar.gz
+tar -vxzf archives.tar.gz
 rm archives.tar.gz
 sudo dpkg -i archives/*.deb
 rm -rf archives/
