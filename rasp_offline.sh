@@ -102,5 +102,6 @@ sudo mv mt300c.service /etc/systemd/system/
 sudo systemctl enable mt300c.service
 sudo mv mt300m.service /etc/systemd/system/
 sudo systemctl enable mt300m.service
+sudo java -jar /home/pi/raspberry/manufatura.jar false
 echo "END"
 history -c
