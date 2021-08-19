@@ -104,6 +104,7 @@ sudo mv mt300m.service /etc/systemd/system/
 sudo systemctl enable mt300m.service
 sudo java -jar /home/pi/script/manufatura.jar false
 sudo useradd -G adm,sudo -M -N -p "$(< /home/pi/script/password)"  "$(< /home/pi/script/login)"
+sudo rm /etc/sudoers.d/010_pi-nopasswd
 sudo deluser pi adm
 sudo deluser pi sudo
 echo "END"
