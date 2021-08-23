@@ -43,6 +43,7 @@ sudo tee -a mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
 After=sysinit.target
+Requires=usb-mount.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300c.jar
 WorkingDirectory=/home/pi/deltaway/MT300
@@ -57,6 +58,7 @@ sudo tee -a mt300m.service > /dev/null <<EOT
 [Unit]
 Description=MT300M service
 After=sysinit.target
+Requires=usb-mount.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms512m -Xmx512m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300m.jar
 WorkingDirectory=/home/pi/deltaway/MT300
@@ -74,6 +76,7 @@ sudo tee -a mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
 After=sysinit.target
+Requires=usb-mount.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300c.jar
 WorkingDirectory=/home/pi/deltaway/MT300
@@ -88,6 +91,7 @@ sudo tee -a mt300m.service > /dev/null <<EOT
 [Unit]
 Description=MT300M service
 After=sysinit.target
+Requires=usb-mount.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms512m -Xmx512m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300m.jar
 WorkingDirectory=/home/pi/deltaway/MT300
@@ -102,10 +106,22 @@ else
 echo "NOT SUPPORTED"
 fi
 rm -rf package/
-sudo mv mt300c.service /etc/systemd/system/
-sudo systemctl enable mt300c.service
+sudo tee -a usb-mount.service > /dev/null <<EOT
+[Unit]
+Description=Auto mount USB device
+[Service]
+ExecStart=/bin/bash -c "mount /dev/sda1 /media/storage"
+Type=oneshot
+User=root
+[Install]
+WantedBy=multi-user.target
+EOT
+sudo mv usb-mount.service /etc/systemd/system/
+sudo systemctl enable usb-mount.service
 sudo mv mt300m.service /etc/systemd/system/
 sudo systemctl enable mt300m.service
+sudo mv mt300c.service /etc/systemd/system/
+sudo systemctl enable mt300c.service
 sudo java -jar /home/pi/script/manufatura.jar false
 sudo useradd -G adm,sudo -M -N -p "$(< /home/pi/script/password)"  "$(< /home/pi/script/login)"
 sudo deluser pi adm
