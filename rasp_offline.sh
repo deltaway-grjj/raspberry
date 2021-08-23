@@ -11,13 +11,29 @@ echo 'dtoverlay=i2c-gpio,i2c_gpio_sda=8,i2c_gpio_scl=9' | sudo tee -a /boot/conf
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
 sudo systemctl disable dphys-swapfile.service
+#sudo mkdir -p /home/pi/deltaway/MT300
+#sudo mkdir -p /home/pi/deltaway/MT300/Config
+#sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Backup
+#sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
+#sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
+#sudo mkdir -p /home/pi/deltaway/MT300/Log
+#sudo mkdir -p /home/pi/deltaway/MT300/lib
+sudo mkdir /media/storage
+sudo mount /dev/sda1 /media/storage
 sudo mkdir -p /home/pi/deltaway/MT300
-sudo mkdir -p /home/pi/deltaway/MT300/Config
-sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Backup
-sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
-sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
-sudo mkdir -p /home/pi/deltaway/MT300/Log
+sudo mkdir -p /media/storage/Config
+sudo ln -s /media/storage/Config/ /home/pi/deltaway/MT300/Config
+sudo mkdir -p /media/storage/F{1..4}
+sudo ln -s /media/storage/F1 /home/pi/deltaway/MT300/F1
+sudo ln -s /media/storage/F2 /home/pi/deltaway/MT300/F2
+sudo ln -s /media/storage/F3 /home/pi/deltaway/MT300/F3
+sudo ln -s /media/storage/F4 /home/pi/deltaway/MT300/F4
+sudo mkdir -p /media/storage/F{1..4}/Backup
+sudo mkdir -p /media/storage/F{1..4}/NaoColetadas
+sudo mkdir -p /media/storage/F{1..4}/Teste
 sudo mkdir -p /home/pi/deltaway/MT300/lib
+sudo mkdir -p /media/storage/Log
+sudo ln -s /media/storage/Log/ /home/pi/deltaway/MT300/Log
 wget ftp://teste:@192.168.10.238/package.tar.gz
 tar -xzf package.tar.gz
 rm package.tar.gz
