@@ -11,13 +11,6 @@ echo 'dtoverlay=i2c-gpio,i2c_gpio_sda=8,i2c_gpio_scl=9' | sudo tee -a /boot/conf
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
 sudo systemctl disable dphys-swapfile.service
-#sudo mkdir -p /home/pi/deltaway/MT300
-#sudo mkdir -p /home/pi/deltaway/MT300/Config
-#sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Backup
-#sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/NaoColetadas
-#sudo mkdir -p /home/pi/deltaway/MT300/F{1..4}/Teste
-#sudo mkdir -p /home/pi/deltaway/MT300/Log
-#sudo mkdir -p /home/pi/deltaway/MT300/lib
 sudo mkdir /media/storage
 sudo mount /dev/sda1 /media/storage
 sudo mkdir -p /home/pi/deltaway/MT300
