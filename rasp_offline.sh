@@ -1,4 +1,5 @@
 #!/bin/bash
+sudo timedatectl set-timezone America/Sao_Paulo
 wget ftp://teste:@192.168.10.238/archives.tar.gz
 tar -vxzf archives.tar.gz
 rm archives.tar.gz
