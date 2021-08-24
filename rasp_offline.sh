@@ -132,8 +132,8 @@ sudo java -jar script/manufatura.jar false
 sudo useradd -G adm,sudo -M -N -p "$(< /home/pi/script/password)"  "$(< /home/pi/script/login)"
 sudo deluser pi adm
 sudo deluser pi sudo
-sudo rm /tmp/*
-sudo rm /var/log/*
-sudo rm /var/tmp/*
+sudo rm -rf /tmp/*
+sudo rm -rf /var/log/*
+sudo rm -rf /var/tmp/*
 sudo rm /etc/sudoers.d/010_pi-nopasswd
 echo "END"
