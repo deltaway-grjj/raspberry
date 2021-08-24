@@ -13,6 +13,9 @@ sudo systemctl disable systemd-timesyncd
 sudo systemctl disable dphys-swapfile.service
 sudo mkdir /media/storage
 sudo mount /dev/sda1 /media/storage
+sudo cp /etc/dhcpcd.conf /media/storage/
+sudo rm /etc/dhcpcd.conf
+sudo ln -s /media/storage/dhcpcd.conf /etc/
 sudo mkdir -p /home/pi/deltaway/MT300
 sudo mkdir -p /media/storage/Config
 sudo ln -s /media/storage/Config/ /home/pi/deltaway/MT300/Config
