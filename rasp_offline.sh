@@ -7,11 +7,11 @@ sudo mount -a
 sudo timedatectl set-timezone America/Sao_Paulo
 sudo dtparam i2c_arm=on
 sudo modprobe i2c-dev
-wget ftp://teste:@192.168.10.238/archives.tar.gz
-tar -vxzf archives.tar.gz
-rm archives.tar.gz
-sudo dpkg -i archives/*.deb
-rm -rf archives/
+#wget ftp://teste:@192.168.10.238/archives.tar.gz
+#tar -vxzf archives.tar.gz
+#rm archives.tar.gz
+#sudo dpkg -i archives/*.deb
+#rm -rf archives/
 echo 'dtoverlay=disable-bt' | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
 echo 'dtoverlay=disable-wifi' | sudo tee -a /boot/config.txt
