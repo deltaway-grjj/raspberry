@@ -1,9 +1,4 @@
 #!/bin/bash
-DIR="/storage/"
-sudo mkdir $DIR
-OUTPUT="$(sudo blkid -s UUID -o value /dev/mmcblk0p3)"
-echo "UUID="$OUTPUT" /storage ext4 defaults,noatime 0 2" | sudo tee -a /etc/fstab
-sudo mount -a
 sudo timedatectl set-timezone America/Sao_Paulo
 sudo dtparam i2c_arm=on
 sudo modprobe i2c-dev
@@ -19,6 +14,7 @@ echo 'dtoverlay=i2c-gpio,i2c_gpio_sda=8,i2c_gpio_scl=9' | sudo tee -a /boot/conf
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
 sudo systemctl disable dphys-swapfile.service
+DIR="/storage/"
 #sudo mkdir $DIR
 #sudo mount /dev/sda1 $DIR
 #sudo cp /etc/dhcpcd.conf $DIR
