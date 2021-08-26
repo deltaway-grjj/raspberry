@@ -48,7 +48,7 @@ sudo tee -a mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
 After=sysinit.target
-Requires=usb-mount.service
+#Requires=usb-mount.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300c.jar
 WorkingDirectory=/home/pi/deltaway/MT300
@@ -63,7 +63,7 @@ sudo tee -a mt300m.service > /dev/null <<EOT
 [Unit]
 Description=MT300M service
 After=sysinit.target
-Requires=usb-mount.service
+#Requires=usb-mount.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms512m -Xmx512m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300m.jar
 WorkingDirectory=/home/pi/deltaway/MT300
@@ -81,7 +81,7 @@ sudo tee -a mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
 After=sysinit.target
-Requires=usb-mount.service
+#Requires=usb-mount.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300c.jar
 WorkingDirectory=/home/pi/deltaway/MT300
@@ -96,7 +96,7 @@ sudo tee -a mt300m.service > /dev/null <<EOT
 [Unit]
 Description=MT300M service
 After=sysinit.target
-Requires=usb-mount.service
+#Requires=usb-mount.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms512m -Xmx512m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300m.jar
 WorkingDirectory=/home/pi/deltaway/MT300
