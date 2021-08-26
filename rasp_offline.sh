@@ -14,25 +14,26 @@ echo 'dtoverlay=i2c-gpio,i2c_gpio_sda=8,i2c_gpio_scl=9' | sudo tee -a /boot/conf
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
 sudo systemctl disable dphys-swapfile.service
-sudo mkdir /media/storage
-sudo mount /dev/sda1 /media/storage
-sudo cp /etc/dhcpcd.conf /media/storage/
-sudo rm /etc/dhcpcd.conf
-sudo ln -s /media/storage/dhcpcd.conf /etc/
+DIR="/storage/"
+#sudo mkdir $DIR
+#sudo mount /dev/sda1 $DIR
+#sudo cp /etc/dhcpcd.conf $DIR
+#sudo rm /etc/dhcpcd.conf
+#sudo ln -s $DIR/dhcpcd.conf /etc/
 sudo mkdir -p /home/pi/deltaway/MT300
-sudo mkdir -p /media/storage/Config
-sudo ln -s /media/storage/Config/ /home/pi/deltaway/MT300/Config
-sudo mkdir -p /media/storage/F{1..4}
-sudo ln -s /media/storage/F1 /home/pi/deltaway/MT300/F1
-sudo ln -s /media/storage/F2 /home/pi/deltaway/MT300/F2
-sudo ln -s /media/storage/F3 /home/pi/deltaway/MT300/F3
-sudo ln -s /media/storage/F4 /home/pi/deltaway/MT300/F4
-sudo mkdir -p /media/storage/F{1..4}/Backup
-sudo mkdir -p /media/storage/F{1..4}/NaoColetadas
-sudo mkdir -p /media/storage/F{1..4}/Teste
+sudo mkdir -p $DIR/Config
+sudo ln -s $DIR/Config/ /home/pi/deltaway/MT300/Config
+sudo mkdir -p $DIR/F{1..4}
+sudo ln -s $DIR/F1 /home/pi/deltaway/MT300/F1
+sudo ln -s $DIR/F2 /home/pi/deltaway/MT300/F2
+sudo ln -s $DIR/F3 /home/pi/deltaway/MT300/F3
+sudo ln -s $DIR/F4 /home/pi/deltaway/MT300/F4
+sudo mkdir -p $DIR/F{1..4}/Backup
+sudo mkdir -p $DIR/F{1..4}/NaoColetadas
+sudo mkdir -p $DIR/F{1..4}/Teste
 sudo mkdir -p /home/pi/deltaway/MT300/lib
-sudo mkdir -p /media/storage/Log
-sudo ln -s /media/storage/Log/ /home/pi/deltaway/MT300/Log
+sudo mkdir -p $DIR/Log
+sudo ln -s $DIR/Log/ /home/pi/deltaway/MT300/Log
 wget ftp://teste:@192.168.10.238/package.tar.gz
 tar -xzf package.tar.gz
 rm package.tar.gz
@@ -112,18 +113,18 @@ else
 echo "NOT SUPPORTED"
 fi
 rm -rf package/
-sudo tee -a usb-mount.service > /dev/null <<EOT
-[Unit]
-Description=Auto mount USB device
-[Service]
-ExecStart=/bin/bash -c "mount /dev/sda1 /media/storage"
-Type=oneshot
-User=root
-[Install]
-WantedBy=multi-user.target
-EOT
-sudo mv usb-mount.service /etc/systemd/system/
-sudo systemctl enable usb-mount.service
+#sudo tee -a usb-mount.service > /dev/null <<EOT
+#[Unit]
+#Description=Auto mount USB device
+#[Service]
+#ExecStart=/bin/bash -c "mount /dev/sda1 $DIR"
+#Type=oneshot
+#User=root
+#[Install]
+#WantedBy=multi-user.target
+#EOT
+#sudo mv usb-mount.service /etc/systemd/system/
+#sudo systemctl enable usb-mount.service
 sudo mv mt300m.service /etc/systemd/system/
 sudo systemctl enable mt300m.service
 sudo mv mt300c.service /etc/systemd/system/
