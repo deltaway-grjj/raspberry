@@ -1,7 +1,5 @@
 #!/bin/bash
 sudo timedatectl set-timezone America/Sao_Paulo
-sudo dtparam i2c_arm=on
-sudo modprobe i2c-dev
 #wget ftp://teste:@192.168.10.238/archives.tar.gz
 #tar -vxzf archives.tar.gz
 #rm archives.tar.gz
