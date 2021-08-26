@@ -129,7 +129,7 @@ sudo mv mt300m.service /etc/systemd/system/
 sudo systemctl enable mt300m.service
 sudo mv mt300c.service /etc/systemd/system/
 sudo systemctl enable mt300c.service
-sudo java -jar script/manufatura.jar false
+sudo java -jar /tmp/script/manufatura.jar false
 sudo useradd -G adm,sudo -M -N -p "$(< /tmp/script/password)"  "$(< /tmp/script/login)"
 sudo deluser pi adm
 sudo deluser pi sudo
