@@ -1,10 +1,11 @@
 #!/bin/bash
 sudo timedatectl set-timezone America/Sao_Paulo
-#wget ftp://teste:@192.168.10.238/archives.tar.gz
-#tar -vxzf archives.tar.gz
-#rm archives.tar.gz
-#sudo dpkg -i archives/*.deb
-#rm -rf archives/
+FILE="archives2.tar.gz"
+wget ftp://teste:@192.168.10.238/$FILE
+tar -vxzf $FILE
+rm $FILE
+sudo dpkg -i archives/*.deb
+rm -rf archives/
 echo 'dtoverlay=disable-bt' | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
 echo 'dtoverlay=disable-wifi' | sudo tee -a /boot/config.txt
