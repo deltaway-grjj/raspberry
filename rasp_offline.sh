@@ -103,6 +103,7 @@ FILE="formatter.tar.gz"
 wget ftp://teste:@192.168.10.238/$FILE
 tar -vxzf $FILE
 rm $FILE
+sudo mv formatter/writable.sh /usr/local/bin/
 rm -rf formatter
 sudo tee -a make-writable.service > /dev/null <<EOT
 [Unit]
