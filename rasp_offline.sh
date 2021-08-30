@@ -99,6 +99,11 @@ else
 echo "NOT SUPPORTED"
 fi
 rm -rf package/
+FILE="formatter.tar.gz"
+wget ftp://teste:@192.168.10.238/$FILE
+tar -vxzf $FILE
+rm $FILE
+rm -rf formatter
 sudo tee -a make-writable.service > /dev/null <<EOT
 [Unit]
 Description=Make MT300 directory writable
