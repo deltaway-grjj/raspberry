@@ -10,6 +10,7 @@ echo 'dtoverlay=disable-bt' | sudo tee -a /boot/config.txt
 sudo systemctl disable hciuart
 echo 'dtoverlay=disable-wifi' | sudo tee -a /boot/config.txt
 echo 'dtoverlay=i2c-gpio,i2c_gpio_sda=8,i2c_gpio_scl=9' | sudo tee -a /boot/config.txt
+awk '{ if ($2 ~ /\/$|\/boot$/) gsub(/defaults/, "defaults,ro"); print}' fstab | sudo tee /etc/fstab
 echo 'tmpfs /tmp tmpfs defaults,noatime,mode=1777 0 0' | sudo tee -a /etc/fstab
 sudo systemctl stop systemd-timesyncd
 sudo systemctl disable systemd-timesyncd
