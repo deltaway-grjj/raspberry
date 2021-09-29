@@ -37,7 +37,7 @@ sudo mv package/deltaway_device_driver_RPi3.ko /home/pi/deltaway/MT300/deltaway_
 sudo tee -a mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
-After=sysinit.target
+After=make-writable.service
 Requires=make-writable.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300c.jar
@@ -52,7 +52,7 @@ EOT
 sudo tee -a mt300m.service > /dev/null <<EOT
 [Unit]
 Description=MT300M service
-After=sysinit.target
+After=make-writable.service
 Requires=make-writable.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms512m -Xmx512m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300m.jar
@@ -70,7 +70,7 @@ sudo mv package/deltaway_device_driver_RPi4.ko /home/pi/deltaway/MT300/deltaway_
 sudo tee -a mt300c.service > /dev/null <<EOT
 [Unit]
 Description=MT300C service
-After=sysinit.target
+After=make-writable.service
 Requires=make-writable.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms256m -Xmx256m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300c.jar
@@ -85,7 +85,7 @@ EOT
 sudo tee -a mt300m.service > /dev/null <<EOT
 [Unit]
 Description=MT300M service
-After=sysinit.target
+After=make-writable.service
 Requires=make-writable.service
 [Service]
 ExecStart=/usr/bin/java -server -Xms512m -Xmx512m -XX:+CMSParallelRemarkEnabled -XX:+DisableExplicitGC -XX:+UseConcMarkSweepGC -XX:MaxGCPauseMillis=10 -jar mt300m.jar
