@@ -119,6 +119,7 @@ WantedBy=multi-user.target
 EOT
 sudo mv make-writable.service /etc/systemd/system/
 sudo systemctl enable make-writable.service
+sudo systemctl start make-writable.service
 sudo mv mt300m.service /etc/systemd/system/
 sudo systemctl enable mt300m.service
 sudo mv mt300c.service /etc/systemd/system/
